@@ -1,0 +1,79 @@
+// css header
+.header{
+    --heigh-header:150px;
+    height: var(--heigh-header);
+    position: relative;
+    margin-top: 20px;
+    &__top{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &-logo{
+            @include text(18px,rum,95px,$green-cl,none);
+            display: flex;
+        }
+        &-contact{
+            display: flex;
+            align-items: center;
+            .email{
+                margin-right: 14px
+            }
+            span{
+                @include text(16px,db,23px,$blue-cl,normal);
+
+            }
+            p{
+                @include text(17px,dr,23px,$black-cl,normal);
+            }
+        }
+        &-social{
+            .social{
+                &:not(:last-child){
+                    margin-right: 3px;
+                }
+            }
+        }
+    }
+    &__menu{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $blue-cl;
+        border-radius: 100px;
+        height: 65px;
+        position: absolute;
+        bottom: -33px;
+        z-index: 300;
+        li{
+            height: 100%;
+            width: 146px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:not(:last-child){
+                border-right: 2px solid #143450;
+            }
+            a{
+                @include text(18px,dr,normal,$white-cl,normal);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+            &:hover{
+                @include transition($t);
+                background: $green-cl;
+            }
+            &:first-child:hover{
+                border-top-left-radius: 100px;
+                border-bottom-left-radius: 100px;
+
+            }
+            &:last-child:hover{
+                border-top-right-radius: 100px;
+                border-bottom-right-radius: 100px;
+            }
+        }
+    }
+}
