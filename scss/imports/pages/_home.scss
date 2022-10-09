@@ -116,6 +116,8 @@
     }
 }
 .welcome{
+    padding-top: 35px;
+    background:#f7f7f7 ;
     .container{
         display: flex;
         align-items: center;
@@ -127,6 +129,18 @@
             }
             >.para{
               margin-bottom: 20px;  
+            }
+            .btnread{
+                margin-right: 5px;
+                @include text(20px,db,normal,$green-cl,capitalize);
+                .icon{
+                    padding-left: 5px;
+                    @include transition($t);
+                }
+                &:hover .icon{
+                    padding-left: 20px;
+                    @include transition($t);
+                }
             }
         }
     }
