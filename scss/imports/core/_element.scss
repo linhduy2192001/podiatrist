@@ -123,3 +123,41 @@
            }
     }
 }
+
+.option{
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .textbox{
+        max-width: 200px;
+        .heading{
+            @include text(21px,rum,normal,$black-cl,capitalize);
+            margin-bottom: 13px;
+        }
+        .para{
+             @include text(18px,dr,26px,$black-cl,capitalize);
+        }
+    }
+    .circle{
+        margin-right: 17px;
+        width: 148px;
+        height: 148px;
+        border-radius: 100%;
+        background: $green-cl;
+        position: relative;
+        @include transition($t);
+       img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+       }
+    }
+    &:hover{
+        .circle{
+        @include transition($t);
+        background: $blue-cl;
+        }
+    }
+}

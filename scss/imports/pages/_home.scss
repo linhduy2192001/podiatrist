@@ -176,15 +176,32 @@
                     height: 100%;
                     width: 100%;
                     object-fit: cover;
-                     @include mid($flex:false);
+                    transform: scale(1);
+                    @include transition($t);
                 }
             }
-            .eyes{
-                @include mid($flex:false);
+            .btnzoom{
+                .eyes{
+                    @include mid($flex:false);
+                    z-index: 100;
+                    @include visible($param:0);
+                }
+                &::after{
+                    content: "";
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 100%;
+                    background: $black-cl;
+                    display: none;
+                    @include mid($flex:false);
+                    opacity: 0.5;
+                }
             }
+           
             &:nth-child(1),
             &:nth-child(2),
             &:nth-child(3){
+                box-sizing: border-box;
                     height: 380px;
                     .img{
                         height: 100%;
@@ -193,16 +210,133 @@
             &:nth-child(1){
                 padding-left: 70px;
                 padding-top: 80px;
+                box-sizing: border-box;
                 .eyes{
-                    top: calc(50% + 80px);
-                    left: calc(50% + 70px);
-                    transform: translate(-70px,-80px);
+                    
                 }
             }
             &:nth-child(3){
                 padding-right: 70px;
                 padding-top: 80px;
             }
+           &:hover{
+            @include transition($t);
+            .img{
+                img{
+                    @include transition($t);
+                    transform: scale(1.1);
+                }
+            }
+            .btnzoom{
+                .eyes{
+                    @include visible($param:1);
+                }
+                &::after{
+                    display: block;
+                }
+            }
+           }
         }
     }
+}
+.team{
+    background: $gray-ss-cl;
+    .textbox{
+        margin-bottom: 56px;
+    }
+    &__list{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: repeat(1,1fr);
+        gap: 30px;
+        &-member{
+            border: 2px solid transparent;
+            @include transition($t);
+            .img{
+                height: 325px;
+                overflow: hidden;
+                cursor: pointer;
+                img{
+                    width: 101%;
+                    height: 101%;
+                    object-fit: cover;
+                    transform: scale(1.0);
+                    @include transition($t);
+                }
+            }
+            .info{
+                cursor: pointer;
+                padding: 25px 20px;
+                @include transition($t);
+                text-align: center;
+                .name{
+                    @include text(21px,db,22px,$black-cl,capitalize);
+                    margin-bottom: 7px;
+                }
+                .regency{
+                    @include text(15px,dr,22px,$black-cl,capitalize);
+
+                }
+            }
+            &:hover{
+                border: 2px solid $green-cl;
+                @include transition($t);
+                .img{
+                    img{
+                        transform: scale(1.1);
+                         @include transition($t);
+                    }
+                }
+                .info{
+                    background: $white-cl;
+                    @include transition($t);
+                }
+            }
+        }
+    }
+}
+.why{
+  
+   &__chart{
+    margin-top: 105px;
+    &-top{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 107px;
+        .option{
+            &:nth-child(1){
+                position: relative;
+                .circle{
+                    &::after{
+                        width: 100px;
+                        height: 1px;
+                        border-style: dashed;
+                        border-color: $green-cl;
+                        display: block;
+                        content: "";
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+    &-bottom{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .option{
+            flex-direction: row-reverse;
+            .circle{
+                margin-right: initial;
+                margin-left: 17px;
+            }
+            .textbox{
+                text-align: right;
+            }
+        }
+    }
+   }
 }
