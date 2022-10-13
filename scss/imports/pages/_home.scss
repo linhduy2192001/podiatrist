@@ -357,14 +357,20 @@
 
 .news{
     background: $green-ss-cl;
-    >.textbox{
-        margin-bottom: 87px;
+    .textbox{
+        .line{
+            &::after,&::before{
+                width: 141px;
+            }
+        }
     }
     &__list{
+         margin-top: 87px;
         display: grid;
         grid-template-columns: repeat(3,1fr);
         gap: 30px;
         &-post{
+            cursor: pointer;
             position: relative;
             .thumb{
                 height: 300px;
@@ -374,32 +380,59 @@
                     height: 100%;
                     object-fit: cover;
                     max-height: 100%;
+                    transform: scale(1.0);
+                    @include transition($t);
+                }
+                &:hover{
+                    img{
+                        transform: scale(1.1);
+                        @include transition($t);
+                    }
                 }
             }
             .content{
                 padding: 15px 15px 30px 15px;
+                border: 1px solid #ccc;
                 .title{
                     padding: 0px 12px;
                     display: flex;
+                    flex: 1;
                     justify-content: center;
                     align-items: center;
+                    margin-bottom: 15px;
                     span{
                         @include text(14px,dr,normal,$black-cl,capitalize);
                         &:nth-child(1){
                             margin-right: 26px;
+                            margin-left: 15px;
+                        }
+                        &:nth-child(2){
+                            margin-right: 15px;
                         }
                     }
                     &::before,&::after{
                         content: "";
                         height: 1px;
-                        width: 100%;
+                        flex: 1;
                         background: $green-cl;
                     }
                 }
                 .textbox{
+                    text-align: center;
                     .heading{
                         font-size: 21px;
                         line-height:  normal;
+                        margin-bottom: 15px;
+                    }
+                    .btnread{
+                        display: block;
+                        margin-top: 15px;
+                        @include text(19px,db,normal,$black-cl,capitalize);
+                        @include transition($t);
+                        &:hover{
+                            @include transition($t);
+                            color: $green-cl;
+                        }
                     }
                 }
             }
@@ -431,6 +464,49 @@
                     }
                 }
             }
+        }
+    }
+}
+.manager{
+    &__mem{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &-img{
+            width:70px;
+            height: 70px;
+            border-radius: 100px;
+            overflow: hidden;
+            position: relative;
+            img{
+                @include midimg();
+
+            }
+            &:not(:last-child){
+                margin-right: 15px;
+            }
+        }
+    }
+    .textbox{
+        text-align: center;
+        position: relative;
+        .para{
+            padding-top: 46px;
+            margin: 0 auto;
+            max-width: 680px;
+            @include text(18px,dr,26px,$black-cl,normal);
+        }
+        .name{
+            @include text(23px,db,26px,$green-cl,normal);
+        }
+        .regency{
+            @include text(17px,dr,26px,$black-cl,normal);
+        }
+        .dot{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
         }
     }
 }
